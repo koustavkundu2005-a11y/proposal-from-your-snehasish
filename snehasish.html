@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Love Question ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #ffe6f0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #e61b00;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .yes {
+            background: #ff4da6;
+            color: white;
+        }
+
+        .no {
+            background: #666;
+            color: white;
+            position: relative;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #cc1800;
+        }
+
+        /* Shake animation */
+        @keyframes shake {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(-5px, 0);
+            }
+
+            50% {
+                transform: translate(5px, 0);
+            }
+
+            75% {
+                transform: translate(-5px, 0);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .shake {
+            animation: shake 0.4s;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Shree , will you be my valentine this year?💕</h1>
+    <div id="buttons">
+        <button class="btn yes" onclick="sayYes()">Yes</button>
+        <button class="btn no" id="noBtn" onclick="sayNo()">No</button>
+    </div>
+    <p id="message"></p>
+
+    <script>
+        let noClicks = 0;
+        const noBtn = document.getElementById("noBtn");
+        const msg = document.getElementById("message");
+
+        function sayYes() {
+            msg.innerText = "love you shree❤️";
+            document.getElementById("buttons").style.display = "none";
+        }
+
+        function sayNo() {
+            noClicks++;
+
+            if (noClicks === 1) {
+                msg.innerText = "please please😘";
+                // shake effect
+                noBtn.classList.add("shake");
+                setTimeout(() => noBtn.classList.remove("shake"), 400);
+            } else {
+                // make the No button run away smoothly
+                let x = Math.floor(Math.random() * (window.innerWidth - 120));
+                let y = Math.floor(Math.random() * (window.innerHeight - 80));
+                noBtn.style.position = "absolute";
+                noBtn.style.left = x + "px";
+                noBtn.style.top = y + "px";
+            }
+        }
+    </script>
+</body>
+
+</html>
